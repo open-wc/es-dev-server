@@ -1,0 +1,99 @@
+<html><head>
+  <title>My app</title>
+</head>
+
+<body>
+
+  
+
+  
+
+  
+
+
+
+<script>(function () {
+  function polyfillsLoader() {
+    function loadScript(src, type) {
+      return new Promise(function (resolve) {
+        var script = document.createElement('script');
+
+        function onLoaded() {
+          if (script.parentElement) {
+            script.parentElement.removeChild(script);
+          }
+
+          resolve();
+        }
+
+        script.src = src;
+        script.onload = onLoaded;
+
+        script.onerror = function () {
+          console.error('[polyfills-loader] failed to load: ' + src + ' check the network tab for HTTP status.');
+          onLoaded();
+        };
+
+        if (type) script.type = type;
+        document.head.appendChild(script);
+      });
+    }
+
+    var polyfills = [];
+
+    if (!('noModule' in HTMLScriptElement.prototype)) {
+      polyfills.push(loadScript('./polyfills/regenerator-runtime.ebfd7b154777d0fed9fa79f20e07b8fc.js'));
+    }
+
+    if (!('fetch' in window) || !('Request' in window) || !('signal' in window.Request.prototype)) {
+      polyfills.push(loadScript('./polyfills/fetch.32366c3902f1d160696086309543c0db.js'));
+    }
+
+    if (!('attachShadow' in Element.prototype) || !('getRootNode' in Element.prototype) || window.ShadyDOM && window.ShadyDOM.force) {
+      polyfills.push(loadScript('./polyfills/webcomponents.73f0ff428117951339e4deabad8949ed.js'));
+    }
+
+    if (!('noModule' in HTMLScriptElement.prototype) && 'getRootNode' in Element.prototype) {
+      polyfills.push(loadScript('./polyfills/custom-elements-es5-adapter.3342b468203af1a14ca005e80d14148f.js'));
+    }
+
+    function loadFiles() {
+      [function () {
+        return loadScript('./inline-script-0.js?source=%2Findex.html');
+      }, function () {
+        return loadScript('./inline-script-1.js?source=%2Findex.html', 'module');
+      }, function () {
+        return loadScript('./app.js', 'module');
+      }].reduce(function (a, c) {
+        return a.then(c);
+      }, Promise.resolve());
+    }
+
+    if (polyfills.length) {
+      Promise.all(polyfills).then(loadFiles);
+    } else {
+      loadFiles();
+    }
+  }
+
+  if (!('noModule' in HTMLScriptElement.prototype)) {
+    var s = document.createElement('script');
+
+    function onLoaded() {
+      document.head.removeChild(s);
+      polyfillsLoader();
+    }
+
+    s.src = "polyfills/core-js.a8ea21cd3f54f879f981d1dccc3c2a0c.js";
+    s.onload = onLoaded;
+
+    s.onerror = function () {
+      console.error('[polyfills-loader] failed to load: ' + s.src + ' check the network tab for HTTP status.');
+      onLoaded();
+    };
+
+    document.head.appendChild(s);
+  } else {
+    polyfillsLoader();
+  }
+})();</script></body></html>

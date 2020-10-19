@@ -1,6 +1,5 @@
 module.exports = {
-  rootDir: '../../',
-  appIndex: 'packages/es-dev-server/demo/import-map/index.html',
+  appIndex: 'demo/import-map/index.html',
   open: true,
   watch: true,
 };

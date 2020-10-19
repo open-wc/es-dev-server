@@ -5,5 +5,4 @@ node_modules
 coverage/
 dist
 stats.html
-test/**/snapshots
 CHANGELOG.md

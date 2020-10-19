@@ -33,9 +33,9 @@ const testCases = [
   {
     name: 'multi-page',
     pages: [
-      'packages/es-dev-server/demo/multi-page/',
-      'packages/es-dev-server/demo/multi-page/page-a/',
-      'packages/es-dev-server/demo/multi-page/page-a/sub-page/',
+      'demo/multi-page/',
+      'demo/multi-page/page-a/',
+      'demo/multi-page/page-a/sub-page/',
     ],
     tests: ['inline', 'moduleA', 'moduleB'],
   },

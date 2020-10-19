@@ -141,10 +141,6 @@ describe('babelTransformPlugin', () => {
       });
     });
 
-    /** NOTE: this test can fail over time as browser support improves */
-    it('does not crash and does not transform stage 3 features', async () => {
-      await expectSupportStage3(userAgents['Chrome 78']);
-    });
   });
 
   describe('compatibilityMode MAX', () => {
