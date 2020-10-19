@@ -1,0 +1,9 @@
+!test/**/node_modules
+tsc-dist
+
+node_modules
+coverage/
+dist
+stats.html
+test/**/snapshots
+CHANGELOG.md
