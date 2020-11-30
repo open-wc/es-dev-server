@@ -1,10 +1,26 @@
-import createRollupResolve, { Options } from '@rollup/plugin-node-resolve';
+import createRollupResolve, { RollupNodeResolveOptions } from '@rollup/plugin-node-resolve';
 import path from 'path';
+import fs from 'fs';
 import whatwgUrl from 'whatwg-url';
 import { Plugin } from '../Plugin';
 import { toBrowserPath } from '../utils/utils';
 
-const nodeResolvePackageJson = require('@rollup/plugin-node-resolve/package.json');
+function readPkgJson(pkg: string) {
+  const nodeResolvePath = require.resolve(pkg);
+  const pkgName = path.join('node_modules', pkg);
+  const lastPkgDir = nodeResolvePath.lastIndexOf(pkgName);
+  const pathToPkgDir = nodeResolvePath.substring(0, lastPkgDir);
+  const pkgDir = path.join(pathToPkgDir, pkgName);
+  const pkgJsonPath = path.join(pkgDir, 'package.json');
+  if (!fs.existsSync(pkgJsonPath)) {
+    return undefined;
+  }
+
+  const pkgJsonString = fs.readFileSync(pkgJsonPath, 'utf-8');
+  return JSON.parse(pkgJsonString);
+}
+
+const nodeResolvePackageJson = readPkgJson('@rollup/plugin-node-resolve');
 
 const fakePluginContext = {
   meta: {
@@ -18,29 +34,33 @@ const fakePluginContext = {
 interface NodeResolveConfig {
   rootDir: string;
   fileExtensions: string[];
-  nodeResolve: boolean | Options;
+  nodeResolve: boolean | RollupNodeResolveOptions;
 }
 
 export function nodeResolvePlugin(config: NodeResolveConfig): Plugin {
   const { fileExtensions, rootDir } = config;
+  const userOptions = typeof config.nodeResolve === 'object' ? config.nodeResolve : {};
+  const customResolveOptions: any = (userOptions as any)?.customResolveOptions ?? {};
   const options = {
     rootDir,
     // allow resolving polyfills for nodejs libs
     preferBuiltins: false,
     extensions: fileExtensions,
-    ...(typeof config.nodeResolve === 'object' ? config.nodeResolve : {}),
+    ...userOptions,
+    customResolveOptions: undefined,
+    moduleDirectories: customResolveOptions?.moduleDirectory,
   };
+  const preserveSymlinks = !!customResolveOptions?.preserveSymlinks;
   const nodeResolve = createRollupResolve(options);
 
   // call buildStart
-  const preserveSymlinks = options?.customResolveOptions?.preserveSymlinks;
   nodeResolve.buildStart?.call(fakePluginContext as any, { preserveSymlinks });
 
   return {
     async serverStart({ config }) {},
 
     async resolveImport({ source, context }) {
-      if (! path.isAbsolute(source) && whatwgUrl.parseURL(source) != null) {
+      if (!path.isAbsolute(source) && whatwgUrl.parseURL(source) != null) {
         // don't resolve relative and valid urls
         return source;
       }
