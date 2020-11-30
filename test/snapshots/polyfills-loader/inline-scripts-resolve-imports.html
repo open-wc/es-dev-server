@@ -46,11 +46,11 @@
     }
 
     if (!('fetch' in window) || !('Request' in window) || !('signal' in window.Request.prototype)) {
-      polyfills.push(loadScript('./polyfills/fetch.32366c3902f1d160696086309543c0db.js'));
+      polyfills.push(loadScript('./polyfills/fetch.3a25c03b21a48c3f864a76352c53625e.js'));
     }
 
     if (!('attachShadow' in Element.prototype) || !('getRootNode' in Element.prototype) || window.ShadyDOM && window.ShadyDOM.force) {
-      polyfills.push(loadScript('./polyfills/webcomponents.73f0ff428117951339e4deabad8949ed.js'));
+      polyfills.push(loadScript('./polyfills/webcomponents.ed846db3e7c3b1354dcb129b8858e4d4.js'));
     }
 
     if (!('noModule' in HTMLScriptElement.prototype) && 'getRootNode' in Element.prototype) {
@@ -84,7 +84,7 @@
       polyfillsLoader();
     }
 
-    s.src = "polyfills/core-js.a8ea21cd3f54f879f981d1dccc3c2a0c.js";
+    s.src = "polyfills/core-js.ef187033b1f6d4e436278a385a4811e1.js";
     s.onload = onLoaded;
 
     s.onerror = function () {
