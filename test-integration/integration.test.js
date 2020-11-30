@@ -72,6 +72,7 @@ describe('integration tests', () => {
               resolve();
             }),
           );
+          await new Promise(r => setTimeout(r, 50));
         });
 
         testCase.pages.forEach(pageUrl => {
