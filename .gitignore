@@ -5,4 +5,3 @@ tsc-dist
 coverage/
 dist
 stats.html
-CHANGELOG.md
