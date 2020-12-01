@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/open-wc/open-wc/compare/v1.60.0...v2.0.0) (2020-12-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* update to node-resolve v11
+
+### Features
+
+* update to node-resolve v11 ([50d8361](https://github.com/open-wc/open-wc/commit/50d836128c4dbd64617efb26afb3a127976a1cea))
+
 ## [1.60.0](https://github.com/open-wc/open-wc/compare/v1.59.0...v1.60.0) (2020-12-01)
 
 
