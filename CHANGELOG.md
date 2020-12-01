@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.60.1](https://github.com/open-wc/open-wc/compare/v1.60.0...v1.60.1) (2020-12-01)
+
 ## [1.60.0](https://github.com/open-wc/open-wc/compare/v1.59.0...v1.60.0) (2020-12-01)
 
 
