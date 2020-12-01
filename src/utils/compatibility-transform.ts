@@ -1,5 +1,5 @@
 import { TransformOptions } from '@babel/core';
-import { RollupNodeResolveOptions } from '@rollup/plugin-node-resolve';
+import { Options } from '@rollup/plugin-node-resolve';
 import { BabelTransform } from './babel-transform';
 import { UserAgentCompat } from './user-agent-compat';
 import minimatch from 'minimatch';
@@ -16,7 +16,7 @@ import { logDebug } from './utils';
 export interface CompatibilityTransformConfig {
   rootDir: string;
   readUserBabelConfig: boolean;
-  nodeResolve: boolean | RollupNodeResolveOptions;
+  nodeResolve: boolean | Options;
   compatibilityMode: string;
   customBabelConfig?: TransformOptions;
   fileExtensions: string[];

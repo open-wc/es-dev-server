@@ -50,8 +50,6 @@ async function testNodeResolve({
 
     expect(response.status).to.equal(200);
     expect(responseText).to.equal(expected);
-  } catch (error) {
-    console.error(error);
   } finally {
     server.close();
   }
