@@ -1,7 +1,7 @@
 !test/**/node_modules
 tsc-dist
 
-node_modules
+/node_modules
 coverage/
 dist
 stats.html
