@@ -8,11 +8,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/open-wc/open-wc.git",
-    "directory": "packages/es-dev-server"
+    "url": "https://github.com/open-wc/es-dev-server.git"
   },
   "author": "open-wc",
-  "homepage": "https://github.com/open-wc/open-wc/tree/master/packages/es-dev-server",
+  "homepage": "https://github.com/open-wc/es-dev-server",
   "main": "./dist/es-dev-server.js",
   "bin": {
     "es-dev-server": "./dist/cli.js"
