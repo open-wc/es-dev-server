@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.2](https://github.com/open-wc/es-dev-server/compare/v2.0.1...v2.0.2) (2020-12-09)
+
+
+### Bug Fixes
+
+* correct repository URLs in package.json and CHANGELOG.md ([c0664ae](https://github.com/open-wc/es-dev-server/commit/c0664aec09063fff6110d450d6a7d09109977db7))
+
 ### [2.0.1](https://github.com/open-wc/es-dev-server/compare/v2.0.0...v2.0.1) (2020-12-01)
 
 ## [2.0.0](https://github.com/open-wc/es-dev-server/compare/v1.60.0...v2.0.0) (2020-12-01)
