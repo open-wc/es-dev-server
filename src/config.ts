@@ -230,7 +230,11 @@ export function createConfig(config: Partial<Config>): ParsedConfig {
   }
 
   // middlewares used to be called customMiddlewares
-  const middlewares = config.middlewares || (config as any).customMiddlewares;
+  const middlewares = [
+    // use .middleware for fowards compatibility
+    ...((config as any).middleware || []),
+    ...(config.middlewares || (config as any).customMiddlewares || []),
+  ];
 
   let { appIndex, rootDir = process.cwd() } = config;
   let appIndexDir;
