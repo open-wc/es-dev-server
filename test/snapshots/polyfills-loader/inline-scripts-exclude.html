@@ -77,7 +77,7 @@ async function* asyncGenerator() {
     }
 
     if (!('fetch' in window) || !('Request' in window) || !('signal' in window.Request.prototype)) {
-      polyfills.push(loadScript('./polyfills/fetch.3a25c03b21a48c3f864a76352c53625e.js'));
+      polyfills.push(loadScript('./polyfills/fetch.14071ad5e0a7032d1fab4e63e173e850.js'));
     }
 
     if (!('attachShadow' in Element.prototype) || !('getRootNode' in Element.prototype) || window.ShadyDOM && window.ShadyDOM.force) {
@@ -107,7 +107,7 @@ async function* asyncGenerator() {
       polyfillsLoader();
     }
 
-    s.src = "polyfills/core-js.ef187033b1f6d4e436278a385a4811e1.js";
+    s.src = "polyfills/core-js.f970dc6ccbc07e86f77f40a8d26f78f8.js";
     s.onload = onLoaded;
 
     s.onerror = function () {
