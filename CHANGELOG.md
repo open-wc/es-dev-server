@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/open-wc/es-dev-server/compare/v2.0.2...v2.1.0) (2021-01-18)
+
+
+### Features
+
+* add forwards compatibility for "middleware" config property ([ef0cea1](https://github.com/open-wc/es-dev-server/commit/ef0cea184d2512c0e65c5cce827f0d751b48027e))
+
 ### [2.0.2](https://github.com/open-wc/es-dev-server/compare/v2.0.1...v2.0.2) (2020-12-09)
 
 
